@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff2d8">
+  <title>Power Quiz — Tug of War</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" id="brandHome" aria-label="Về trang chủ">
+        <span class="brand-mark">PQ</span><span>POWER <b>QUIZ</b><small>TUG OF WAR</small></span>
+      </a>
+      <button class="icon-btn" id="soundBtn" aria-label="Bật hoặc tắt âm thanh" title="Âm thanh">🔊</button>
+    </header>
+
+    <main>
+      <section class="screen active" id="homeScreen">
+        <div class="hero">
+          <div class="hero-copy">
+            <span class="eyebrow">THỬ THÁCH TRÍ TUỆ & SỨC MẠNH</span>
+            <h1>GIẢI ĐỐ NHANH.<br><em>KÉO CO MẠNH!</em></h1>
+            <p>Trả lời đúng để tích lũy sức mạnh. Kéo đối thủ qua vạch đích và giành chiến thắng!</p>
+            <div class="home-actions">
+              <button class="primary-btn" id="soloBtn">⚡ Solo với Người Khổng Lồ</button>
+              <button class="secondary-btn" id="duoBtn">👥 Hai người đấu trí</button>
+              <button class="text-btn" id="howBtn">Cách chơi thế nào?</button>
+            </div>
+          </div>
+          <div class="hero-art" aria-label="Hai nhân vật hoạt hình kéo co">
+            <div class="sun"></div><div class="cloud cloud-a"></div><div class="cloud cloud-b"></div>
+            <div class="flag flag-left">🏁</div><div class="flag flag-right">🏁</div>
+            <div class="hero-character kid">
+              <div class="cap"></div><div class="head"><i class="eye e1"></i><i class="eye e2"></i><i class="cheek c1"></i><i class="cheek c2"></i><b class="mouth"></b></div>
+              <div class="body"><span class="strap"></span></div><div class="arm arm-a"></div><div class="arm arm-b"></div><div class="leg leg-a"></div><div class="leg leg-b"></div>
+            </div>
+            <div class="rope hero-rope"><span></span></div>
+            <div class="hero-character giant">
+              <div class="head"><i class="eye e1"></i><i class="eye e2"></i><i class="brow b1"></i><i class="brow b2"></i><b class="mouth"></b></div>
+              <div class="body"><span class="muscle m1"></span><span class="muscle m2"></span></div><div class="arm arm-a"></div><div class="arm arm-b"></div><div class="leg leg-a"></div><div class="leg leg-b"></div>
+            </div>
+            <div class="ground"></div><div class="art-sticker">KÉO NÀO! 💪</div>
+          </div>
+        </div>
+        <div class="feature-row">
+          <div><span>🧠</span><b>Giải câu đố</b><small>Logic, khoa học, kiến thức vui</small></div>
+          <div><span>💥</span><b>Tích sức mạnh</b><small>Đúng càng nhiều, kéo càng xa</small></div>
+          <div><span>🏆</span><b>Chạm vạch thắng</b><small>Chiến thắng bằng trí tuệ</small></div>
+        </div>
+      </section>
+
+      <section class="screen" id="setupScreen">
+        <button class="back-link" id="setupBack">← Trang chủ</button>
+        <div class="setup-card">
+          <span class="eyebrow">SẴN SÀNG CHƯA?</span>
+          <h2 id="setupTitle">Chọn thử thách</h2>
+          <p id="setupDesc">Chọn cấp độ để bắt đầu trận đấu.</p>
+          <div id="duoLobby" class="duo-lobby hidden"><h3>👥 Chơi cùng bạn trên 2 thiết bị</h3><p>Một người tạo phòng, sau đó gửi mã phòng cho người còn lại. Cả hai cần mở game trên thiết bị riêng và cùng tham gia phòng.</p><div class="lobby-actions"><button class="primary-btn" id="createRoomBtn">TẠO PHÒNG</button><div class="join-row"><input id="roomCodeInput" maxlength="6" inputmode="numeric" placeholder="Nhập mã 6 số" aria-label="Mã phòng"><button class="secondary-btn" id="joinRoomBtn">THAM GIA</button></div></div><p id="lobbyStatus" aria-live="polite">Tạo phòng mới hoặc nhập mã bạn bè gửi.</p><div id="roomCodePanel" class="hidden"><strong>MÃ PHÒNG: <span id="roomCodeText"></span></strong><button class="secondary-btn" id="copyRoomBtn">SAO CHÉP MÃ</button><p>Gửi mã này cho người chơi còn lại. Trận đấu sẽ bắt đầu khi họ kết nối.</p></div></div><div id="difficultyOptions" class="difficulty-options">
+            <button class="difficulty selected" data-level="easy"><strong>🌱 EASY</strong><span>Người Khổng Lồ trả lời đúng khoảng 45%</span></button>
+            <button class="difficulty" data-level="normal"><strong>⚡ NORMAL</strong><span>Người Khổng Lồ trả lời đúng khoảng 55%</span></button>
+            <button class="difficulty" data-level="hard"><strong>🔥 HARD</strong><span>Người Khổng Lồ trả lời đúng khoảng 65%</span></button>
+          </div>
+          <label class="setting-label" for="topicSelect">Chủ đề câu hỏi</label>
+          <select id="topicSelect"><option value="all">🎲 Tất cả chủ đề</option><option value="logic">🧩 Logic & đố mẹo</option><option value="science">🔬 Khoa học</option><option value="general">🌍 Kiến thức tổng hợp</option><option value="math">➗ Toán vui</option></select>
+          <button class="primary-btn wide" id="startBtn">BẮT ĐẦU KÉO CO →</button>
+        </div>
+      </section>
+
+      <section class="screen" id="arenaScreen">
+        <div class="arena-heading">
+          <button class="back-link" id="quitBtn">← Thoát trận</button>
+          <div class="round-pill" id="roundPill">LƯỢT 1</div>
+          <button class="icon-btn" id="pauseBtn" title="Tạm dừng">Ⅱ</button>
+        </div>
+        <div class="scoreboard">
+          <div class="score-side left-score"><div class="avatar-dot">🧢</div><div><b id="leftName">BẠN</b><strong id="leftPower">0</strong><small>SỨC MẠNH</small></div></div>
+          <div class="score-center"><span>ĐIỂM KÉO</span><div class="progress-track"><div class="progress-fill" id="progressFill"></div><div class="progress-center"></div></div><small id="leadText">Thế trận cân bằng!</small></div>
+          <div class="score-side right-score"><div class="avatar-dot">💪</div><div><b id="rightName">NGƯỜI KHỔNG LỒ</b><strong id="rightPower">0</strong><small>SỨC MẠNH</small></div></div>
+        </div>
+        <div class="battlefield" id="battlefield">
+          <div class="arena-sky"><span class="puff p1"></span><span class="puff p2"></span></div>
+          <div class="finish-line finish-left"><span>ĐÍCH</span></div><div class="finish-line finish-right"><span>ĐÍCH</span></div>
+          <div class="arena-character player-char" id="playerChar">
+            <div class="char-shadow"></div><div class="char-head"><div class="char-hair"></div><div class="char-eyes"><i></i><i></i></div><div class="char-mouth"></div><div class="char-blush"></div><div class="char-cap"></div></div>
+            <div class="char-body player-shirt"><div class="shirt-badge">★</div></div><div class="char-arm arm-left"></div><div class="char-arm arm-right"></div><div class="char-leg leg-left"></div><div class="char-leg leg-right"></div><div class="char-backpack"></div>
+          </div>
+          <div class="arena-rope" id="arenaRope"><div class="rope-strands"></div><div class="rope-knot" id="ropeKnot">🔴</div></div>
+          <div class="arena-character opponent-char" id="opponentChar">
+            <div class="char-shadow"></div><div class="char-head giant-head"><div class="char-hair giant-hair"></div><div class="char-eyes"><i></i><i></i></div><div class="char-mouth"></div><div class="char-blush"></div></div>
+            <div class="char-body giant-shirt"><div class="giant-muscle gm1"></div><div class="giant-muscle gm2"></div><span>G</span></div><div class="char-arm arm-left"></div><div class="char-arm arm-right"></div><div class="char-leg leg-left"></div><div class="char-leg leg-right"></div>
+          </div>
+          <div class="ground-line"></div><div class="action-bubble" id="actionBubble">LET'S GO!</div><div class="sparkles" id="sparkles">✦ ✧ ✦</div>
+        </div>
+        <div class="question-card" id="questionCard">
+          <div class="question-top"><span class="topic-chip" id="topicChip">🧩 LOGIC</span><span class="timer"><span id="timerNum">15</span>s <span class="timer-track"><i id="timerFill"></i></span></span></div>
+          <h2 id="questionText">Sẵn sàng thử thách?</h2>
+          <div class="answers" id="answers"></div>
+          <div class="feedback" id="feedback" aria-live="polite"></div>
+          <div class="explanation" id="explanation"></div>
+          <button class="primary-btn wide hidden" id="nextBtn">TIẾP TỤC →</button>
+        </div>
+        <div class="pause-overlay hidden" id="pauseOverlay"><div><h2>Tạm nghỉ một chút nhé!</h2><button class="primary-btn" id="resumeBtn">Tiếp tục chơi</button></div></div>
+      </section>
+
+      <section class="screen" id="resultScreen">
+        <div class="result-card"><div class="trophy">🏆</div><span class="eyebrow">TRẬN ĐẤU KẾT THÚC</span><h1 id="resultTitle">CHIẾN THẮNG!</h1><p id="resultMessage">Bạn đã kéo đối thủ qua vạch đích.</p>
+          <div class="result-stats"><div><strong id="statCorrect">0</strong><span>Câu đúng</span></div><div><strong id="statAccuracy">0%</strong><span>Độ chính xác</span></div><div><strong id="statPower">0</strong><span>Sức mạnh</span></div></div>
+          <div class="result-actions"><button class="primary-btn" id="rematchBtn">↻ CHƠI LẠI</button><button class="secondary-btn" id="changeModeBtn">ĐỔI CHẾ ĐỘ</button></div>
+        </div>
+      </section>
+
+      <section class="screen" id="howScreen">
+        <button class="back-link" id="howBack">← Quay lại</button>
+        <div class="setup-card how-card"><span class="eyebrow">CÁCH CHƠI</span><h2>Đầu óc nhanh, sức kéo mạnh!</h2>
+          <div class="how-step"><span>1</span><div><b>Đọc câu hỏi</b><p>Bạn có 15 giây để chọn đáp án chính xác.</p></div></div>
+          <div class="how-step"><span>2</span><div><b>Tích lũy sức mạnh</b><p>Đúng câu dễ +10, câu khó +30. Câu sai không được cộng điểm.</p></div></div>
+          <div class="how-step"><span>3</span><div><b>Kéo đối thủ</b><p>Điểm số tác động đến vị trí nút khăn đỏ. Kéo nút qua vạch đích đối thủ để thắng.</p></div></div>
+          <div class="how-step"><span>4</span><div><b>Chơi cùng bạn bè</b><p>Ở chế độ hai người, hãy chuyền thiết bị cho người tiếp theo khi màn hình yêu cầu.</p></div></div>
+        </div>
+      </section>
+    </main>
+    <footer>POWER QUIZ <span>•</span> HỌC VUI – KÉO CO CỰC SUNG</footer>
+  </div>
+  <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
